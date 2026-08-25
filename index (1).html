@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FAQ Acoustique Chantier — V3</title>
+<style>
+:root{
+  --blue:#195278;--blue-dark:#123d5b;--blue-soft:#edf6fb;
+  --green:#2e7d32;--green-soft:#eaf6eb;
+  --orange:#d97718;--orange-soft:#fdf2e6;
+  --red:#be372d;--red-soft:#faebe9;
+  --ink:#2d3439;--muted:#68737b;--line:#dce3e7;--bg:#f5f7f9;--white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.48}
+button,input{font:inherit}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.nav{max-width:1180px;margin:auto;padding:11px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-weight:900;color:var(--blue);display:flex;align-items:center;gap:9px}.brandmark{width:32px;height:32px;border-radius:8px;background:var(--blue);color:#fff;display:grid;place-items:center}
+.tabs{display:flex;gap:7px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-weight:800;cursor:pointer}.tab:hover,.tab.active{background:var(--blue-soft);border-color:var(--blue);color:var(--blue)}
+.hero{background:linear-gradient(135deg,var(--blue-dark),var(--blue));color:#fff;padding:48px 20px 42px}.hero-inner{max-width:980px;margin:auto;text-align:center}.hero h1{margin:0 0 10px;font-size:clamp(34px,5vw,52px);letter-spacing:-.025em}.hero p{margin:0 auto 23px;max-width:760px;font-size:18px;opacity:.94}.search{max-width:760px;margin:auto;background:#fff;border-radius:13px;display:flex;align-items:center;gap:8px;padding:5px 11px;box-shadow:0 14px 35px rgba(0,0,0,.15)}.search input{width:100%;border:0;outline:0;padding:11px 3px;font-size:16px;color:var(--ink)}
+main{max-width:1180px;margin:auto;padding:26px 20px 70px}.panel{display:none}.panel.active{display:block}
+.notice{background:var(--blue-soft);border:1px solid #c8dfe9;border-radius:12px;padding:13px 15px;margin-bottom:20px;color:var(--blue-dark)}
+.section-title{margin:27px 0 13px}.section-title h2{margin:0;color:var(--blue-dark);font-size:27px}.section-title p{margin:4px 0 0;color:var(--muted)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.problem{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px;text-align:left;cursor:pointer;min-height:105px}.problem:hover,.problem.active{border-color:var(--blue);background:var(--blue-soft);transform:translateY(-1px)}.problem b{display:block;color:var(--blue-dark);font-size:16px;margin-bottom:5px}.problem span{font-size:13px;color:var(--muted)}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0 12px}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;font-weight:800;cursor:pointer}.filter:hover,.filter.active{background:var(--blue-soft);border-color:var(--blue);color:var(--blue)}.count{font-size:13px;color:var(--muted)}
+.faq-list{display:grid;gap:11px}.faq{background:#fff;border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:12px;overflow:hidden;box-shadow:0 5px 14px rgba(18,61,91,.035)}.faq.green{border-left-color:var(--green)}.faq.orange{border-left-color:var(--orange)}.faq.red{border-left-color:var(--red)}
+.faq-head{width:100%;border:0;background:transparent;text-align:left;padding:15px 16px;cursor:pointer}.faq-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.q{font-weight:900;font-size:17px;color:var(--ink)}.quick{font-size:14px;color:var(--muted);margin-top:7px;max-width:880px}.expand-hint{font-size:12px;color:var(--blue);font-weight:800;margin-top:8px}.badge{font-size:10px;font-weight:900;border:1px solid;border-radius:999px;padding:5px 7px;white-space:nowrap}.badge.green{color:var(--green);background:var(--green-soft)}.badge.orange{color:var(--orange);background:var(--orange-soft)}.badge.red{color:var(--red);background:var(--red-soft)}
+.detail{display:none;border-top:1px solid var(--line);padding:15px 16px 17px;background:#fbfcfd}.faq.open .detail{display:block}.detail-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:13px}.detail-section{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 13px}.detail-section h4{margin:0 0 6px;color:var(--blue-dark);font-size:14px;text-transform:uppercase;letter-spacing:.04em}.detail-section p{margin:0;font-size:14px}.detail-section ul{margin:5px 0 0;padding-left:18px;font-size:14px}.detail-section li+li{margin-top:4px}.action{background:var(--blue-soft);border-color:#c9dfea}.vigilance{background:var(--orange-soft);border-color:#efd0ae}.problematic{background:var(--red-soft);border-color:#edcbc7}.positive{background:var(--green-soft);border-color:#cce4cf}
+.formula{font-family:"Times New Roman",serif;font-size:18px;text-align:center;background:#f7f9fa;border:1px solid var(--line);border-radius:9px;padding:10px;margin:8px 0}.micro{font-size:12px;color:var(--muted);margin-top:5px}.tagrow{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:11px;border:1px solid var(--line);border-radius:999px;padding:4px 7px;background:#fff;color:var(--muted)}
+.example-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.example{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.example-head{padding:14px 16px;border-bottom:1px solid var(--line)}.example-head small{font-weight:900;color:var(--blue);text-transform:uppercase;letter-spacing:.05em}.example-head h3{margin:3px 0 0;font-size:18px}.example-body{padding:14px 16px}.example-body p{font-size:14px;margin:0 0 9px}.result{background:var(--green-soft);border:1px solid #cce4cf;border-radius:9px;padding:10px 11px;color:#205f25;font-weight:800;font-size:14px}.compare{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:9px 0}.compare>div{border:1px solid var(--line);border-radius:9px;padding:10px;font-size:14px}.compare b{display:block;color:var(--blue-dark);margin-bottom:4px}.warning{background:var(--orange-soft);border:1px solid #efd0ae;border-radius:9px;padding:10px 11px;color:#754913;font-size:13px;margin-top:9px}
+.error-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.error-card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px}.error-card .wrong{color:var(--red);font-weight:900}.error-card .right{font-size:13px;color:var(--muted);margin-top:6px}
+.memo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.memo-item{background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px}.memo-item strong{font-size:21px;color:var(--blue)}.memo-item p{font-size:14px;color:var(--muted);margin:4px 0 0}
+.empty{background:#fff;border:1px dashed var(--line);border-radius:12px;padding:28px;text-align:center;color:var(--muted)}
+footer{background:#fff;border-top:1px solid var(--line)}footer div{max-width:1180px;margin:auto;padding:20px;font-size:12px;color:var(--muted)}
+@media(max-width:900px){.problem-grid,.error-grid{grid-template-columns:repeat(2,1fr)}.detail-grid,.example-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.nav{align-items:flex-start;flex-direction:column}.problem-grid,.error-grid,.memo-grid,.compare{grid-template-columns:1fr}.hero{padding-top:38px}.faq-top{flex-direction:column}.badge{align-self:flex-start}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand"><span class="brandmark">A</span>FAQ Acoustique Chantier</div>
+    <div class="tabs">
+      <button class="tab active" data-panel="faqPanel">Réponses rapides</button>
+      <button class="tab" data-panel="examplesPanel">Exemples concrets</button>
+      <button class="tab" data-panel="errorsPanel">Erreurs fréquentes</button>
+      <button class="tab" data-panel="memoPanel">Mémo</button>
+    </div>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Quel est votre problème acoustique ?</h1>
+    <p>Une réponse courte d'abord. Cliquez ensuite pour comprendre pourquoi, voir un cas de chantier et, si nécessaire, un calcul.</p>
+    <div class="search">⌕<input id="search" placeholder="Rechercher : cloison, Eclipse, machine, entraxe, alpha w, baffle..."></div>
+  </div>
+</section>
+<main>
+<section class="panel active" id="faqPanel">
+  <div class="notice"><b>Principe :</b> une réponse immédiate en quelques secondes, puis le détail uniquement si vous en avez besoin.</div>
+
+  <div class="section-title"><h2>1. Choisir le problème</h2><p>Vous pouvez aussi afficher toutes les questions plus bas.</p></div>
+  <div class="problem-grid">
+    <button class="problem" data-cat="resonance"><b>Ma pièce résonne</b><span>Réverbération, confort de parole, réflexions.</span></button>
+    <button class="problem" data-cat="isolation"><b>J'entends le local voisin</b><span>Cloisons, portes, plénum, transmissions.</span></button>
+    <button class="problem" data-cat="produit"><b>Je dois choisir un produit</b><span>Plafond, îlots, baffles, panneaux muraux.</span></button>
+    <button class="problem" data-cat="dimensionnement"><b>Je veux dimensionner des îlots</b><span>Nombre de modules, surface, espacement.</span></button>
+    <button class="problem" data-cat="comparaison"><b>Je veux comparer deux solutions</b><span>Grand ou petit format, plafond ou îlots.</span></button>
+    <button class="problem" data-cat="valeurs"><b>Je ne comprends pas une valeur</b><span>α(f), αw, Aeq, dB, Rw...</span></button>
+  </div>
+
+  <div class="toolbar">
+    <div class="filters">
+      <button class="filter active" data-cat="all">Toutes</button>
+      <button class="filter" data-cat="resonance">Réverbération</button>
+      <button class="filter" data-cat="isolation">Isolation</button>
+      <button class="filter" data-cat="produit">Choix produit</button>
+      <button class="filter" data-cat="dimensionnement">Dimensionnement</button>
+      <button class="filter" data-cat="comparaison">Comparaisons</button>
+      <button class="filter" data-cat="valeurs">Grandeurs</button>
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+  <div class="faq-list" id="faqList"></div>
+</section>
+
+<section class="panel" id="examplesPanel">
+  <div class="notice"><b>Exemples concrets.</b> Les notations sont expliquées dans le cas où elles apparaissent. Les multiplications sont écrites avec ×.</div>
+  <div class="section-title"><h2>Calculs et comparaisons rapides</h2><p>Le but est de montrer le raisonnement plutôt que de multiplier les tableaux.</p></div>
+  <div class="example-grid">
+    <article class="example searchable"><div class="example-head"><small>Exemple 1</small><h3>Rockfon Blanka — surface continue</h3></div><div class="example-body"><p>On considère <b>S = 50 m²</b>, où S est la surface de plafond installée. À 1000 Hz, on prend <b>α(1000 Hz) = 0,90</b>.</p><div class="formula">A(f) = S × α(f)</div><div class="formula">A(1000 Hz) = 50 × 0,90 = 45 m²</div><div class="result">Le plafond apporte 45 m² d'aire d'absorption équivalente à 1000 Hz.</div></div></article>
+
+    <article class="example searchable"><div class="example-head"><small>Exemple 2</small><h3>Rockfon Eclipse Carré 1160 — plusieurs îlots</h3></div><div class="example-body"><p>On installe <b>N = 5</b> îlots, où N est le nombre de modules. À 1000 Hz, un îlot apporte <b>A<sub>eq</sub> = 2,50 m²/module</b>.</p><div class="formula">A<sub>îlots</sub>(f) = N × A<sub>eq</sub>(f)</div><div class="formula">A<sub>îlots</sub>(1000 Hz) = 5 × 2,50 = 12,50 m²</div><div class="result">Les 5 îlots apportent 12,50 m² d'absorption équivalente à 1000 Hz.</div></div></article>
+
+    <article class="example searchable"><div class="example-head"><small>Exemple 3</small><h3>Blanka + Eclipse — solution mixte</h3></div><div class="example-body"><p>Le plafond apporte <b>A<sub>plafond</sub> = 45 m²</b>. Cinq Eclipse Carré apportent <b>A<sub>îlots</sub> = 12,50 m²</b>.</p><div class="formula">A<sub>total</sub> = A<sub>plafond</sub> + A<sub>îlots</sub></div><div class="formula">A<sub>total</sub> = 45 + 12,50 = 57,50 m²</div><div class="result">Calcul pédagogique : 57,50 m² à 1000 Hz.</div><div class="warning">Dans une configuration réelle, des îlots placés sous un plafond absorbant peuvent interagir avec celui-ci. L'addition simple sert ici à comprendre la logique.</div></div></article>
+
+    <article class="example searchable"><div class="example-head"><small>Exemple 4</small><h3>Même nombre d'îlots — Carré 1160 ou Rectangle 1760 ?</h3></div><div class="example-body"><p>Même hauteur de suspension et même condition d'espacement. On compare <b>N = 5</b> modules à 1000 Hz.</p><div class="compare"><div><b>Carré 1160</b>5 × 2,50 = <b>12,50 m²</b></div><div><b>Rectangle 1760</b>5 × 3,70 = <b>18,50 m²</b></div></div><div class="result">Si le critère est l'absorption par module, le Rectangle est plus favorable dans cette configuration.</div></div></article>
+
+    <article class="example searchable"><div class="example-head"><small>Exemple 5</small><h3>Même surface physique disponible — le résultat change</h3></div><div class="example-body"><p>On dispose d'environ <b>10 m² de surface physique de panneaux</b>. Le Carré 1160 occupe environ 1,35 m²/module et le Rectangle 1760 environ 2,04 m²/module.</p><div class="compare"><div><b>7 Carrés</b>≈ 9,42 m² de panneaux<br>7 × 2,50 = <b>17,50 m² A<sub>eq</sub></b></div><div><b>4 Rectangles</b>≈ 8,17 m² de panneaux<br>4 × 3,70 = <b>14,80 m² A<sub>eq</sub></b></div></div><div class="result">Avec cette contrainte simplifiée, plusieurs Carrés donnent davantage d'A<sub>eq</sub> total.</div><div class="warning">Cela ne remplace pas un calcul d'implantation : il faut aussi tenir compte des espacements, des suspentes et des obstacles.</div></div></article>
+
+    <article class="example searchable"><div class="example-head"><small>Exemple 6</small><h3>Il manque 15 m² d'absorption — combien d'îlots ?</h3></div><div class="example-body"><p><b>ΔA = 15 m²</b> représente ici l'absorption supplémentaire recherchée à 1000 Hz.</p><div class="compare"><div><b>Carré 1160</b>N = 15 / 2,50 = <b>6 îlots</b></div><div><b>Rectangle 1760</b>N = 15 / 3,70 = 4,05 → <b>5 îlots</b></div></div><div class="result">Le nombre calculé est arrondi à l'entier supérieur pour atteindre ou dépasser l'objectif.</div></div></article>
+
+    <article class="example searchable"><div class="example-head"><small>Exemple 7</small><h3>80 m² de plafond, mais seulement 60 m² réellement traitables</h3></div><div class="example-body"><p>La pièce possède 80 m² de plafond géométrique, mais luminaires, trappes et équipements laissent <b>S = 60 m²</b> réellement couverts par le produit acoustique.</p><div class="formula">A(f) = 60 × α(f)</div><div class="result">Le calcul utilise la surface réellement installée, pas automatiquement la surface géométrique totale.</div></div></article>
+
+    <article class="example searchable"><div class="example-head"><small>Exemple 8</small><h3>Je veux traiter 70 % d'un plafond de 120 m²</h3></div><div class="example-body"><p><b>S<sub>plafond</sub> = 120 m²</b>. Le taux de couverture visé est 70 %.</p><div class="formula">S<sub>traitée</sub> = 120 × 0,70 = 84 m²</div><div class="result">La surface de produit acoustique à prévoir est 84 m², avant prise en compte des découpes et contraintes d'implantation.</div></div></article>
+
+    <article class="example searchable"><div class="example-head"><small>Exemple 9</small><h3>Plafond complet ou plafond partiel + îlots ?</h3></div><div class="example-body"><p>Deux solutions peuvent apporter une absorption comparable mais avoir des contraintes très différentes.</p><div class="compare"><div><b>Plafond complet</b>Grande surface continue, intégration régulière, moins de liberté locale.</div><div><b>Plafond partiel + îlots</b>Traitement ciblé, utile lorsque certaines zones du plafond restent occupées par des équipements.</div></div><div class="result">Le choix ne se fait pas uniquement sur un chiffre d'absorption : implantation, architecture et usage de la pièce comptent aussi.</div></div></article>
+
+    <article class="example searchable"><div class="example-head"><small>Exemple 10</small><h3>Même entraxe et même hauteur — quel îlot choisir ?</h3></div><div class="example-body"><p>Deux formats sont posés avec les mêmes conditions de suspension et d'espacement. Le Rectangle présente un A<sub>eq</sub> plus élevé par module, mais occupe plus de surface physique.</p><div class="formula">Critère 1 : A<sub>eq</sub> par module → avantage au Rectangle</div><div class="formula">Critère 2 : nombre de modules possibles dans la pièce → à recalculer avec la géométrie</div><div class="result">Il n'existe pas de « meilleur » format absolu : le meilleur dépend de la contrainte retenue.</div></div></article>
+  </div>
+</section>
+
+<section class="panel" id="errorsPanel">
+  <div class="notice"><b>Erreurs fréquentes.</b> Des raccourcis qui peuvent conduire à un mauvais choix de solution.</div>
+  <div class="error-grid">
+    <div class="error-card"><div class="wrong">✕ 26 dB + 35 dB = 61 dB</div><div class="right">Deux performances en dB ne s'additionnent pas directement pour déduire la performance finale d'un système.</div></div>
+    <div class="error-card"><div class="wrong">✕ α<sub>w</sub> = A<sub>eq</sub></div><div class="right">α<sub>w</sub> est un indice sans unité. A<sub>eq</sub> est une aire d'absorption en m².</div></div>
+    <div class="error-card"><div class="wrong">✕ α<sub>w</sub> = 1 signifie « pièce parfaite »</div><div class="right">Cela caractérise le produit selon un indice global, pas la performance acoustique globale de la pièce.</div></div>
+    <div class="error-card"><div class="wrong">✕ Plus d'absorption = toujours mieux</div><div class="right">Le besoin dépend de l'usage, du volume, du niveau de réverbération et de la répartition du traitement.</div></div>
+    <div class="error-card"><div class="wrong">✕ Une bonne cloison suffit toujours</div><div class="right">Les portes, plafonds, plénums et passages techniques peuvent créer des transmissions latérales.</div></div>
+    <div class="error-card"><div class="wrong">✕ Le plus grand îlot est toujours le meilleur</div><div class="right">Il peut être meilleur par module tout en étant moins favorable lorsque la place disponible ou le nombre de modules devient la contrainte principale.</div></div>
+  </div>
+</section>
+
+<section class="panel" id="memoPanel">
+  <div class="notice"><b>Mémo express.</b> Trois grandeurs à ne pas confondre.</div>
+  <div class="memo-grid">
+    <div class="memo-item"><strong>α(f)</strong><p>Coefficient d'absorption à une fréquence donnée. Sans unité. Utilisé pour les calculs par bande.</p></div>
+    <div class="memo-item"><strong>α<sub>w</sub></strong><p>Indice global sans unité. Utile pour une comparaison synthétique des produits.</p></div>
+    <div class="memo-item"><strong>A<sub>eq</sub>(f)</strong><p>Aire d'absorption équivalente en m². Souvent utilisée pour les îlots, baffles et objets absorbants.</p></div>
+  </div>
+  <div class="warning"><b>Règle :</b> ne pas comparer directement α<sub>w</sub> = 0,95 avec A<sub>eq</sub> = 3,2 m² : ce ne sont pas les mêmes grandeurs.</div>
+</section>
+</main>
+<footer><div>Maquette pédagogique. Les valeurs produit utilisées dans les exemples doivent être vérifiées dans la documentation correspondant à la référence, à l'épaisseur, à la hauteur de suspension et à l'espacement retenus avant usage projet.</div></footer>
+<script>
+const faqData=[
+{
+ cat:'resonance',s:'green',label:'RÉALISABLE',q:'Un plafond acoustique peut-il réduire la réverbération ?',quick:'Oui. Il absorbe une partie des réflexions et peut réduire le temps de réverbération.',
+ why:'La correction acoustique agit sur l\'énergie sonore qui reste dans la pièce après les réflexions sur les parois.',
+ example:'Bureau ouvert avec plafond dur : l\'ajout d\'une grande surface absorbante au plafond réduit généralement la réverbération et améliore le confort de parole.',
+ good:'Problème principal : pièce résonnante, conversations qui restent longtemps audibles, réflexions nombreuses.',bad:'Si le problème est le bruit provenant d\'un autre local, il faut d\'abord regarder l\'isolation.',
+ action:'Évaluer le volume, la surface réellement traitable et les performances par fréquence du plafond envisagé.',need:['Longueur, largeur et hauteur de la pièce','Surface de plafond disponible','Revêtements existants'],study:'Étude utile si un objectif réglementaire ou contractuel de temps de réverbération doit être garanti.'
+},
+{
+ cat:'resonance',s:'orange',label:'À VÉRIFIER',q:'Une machine bruyante peut-elle être traitée uniquement avec des baffles ou un plafond absorbant ?',quick:'Pas forcément. L\'absorption réduit la réverbération, mais elle ne supprime pas le bruit direct émis par la machine.',
+ why:'Une machine produit un champ direct. Les absorbeurs agissent surtout sur les réflexions et le champ réverbéré.',
+ example:'Dans un atelier, des baffles peuvent réduire l\'ambiance sonore globale sans faire disparaître le niveau élevé juste à côté de la machine.',
+ good:'Baffles ou plafond utiles en complément pour limiter la réverbération de l\'atelier.',bad:'Ils ne remplacent pas un capotage, un silencieux, un traitement vibratoire ou une action sur la source si celle-ci domine.',
+ action:'Identifier d\'abord la source dominante, puis compléter par un traitement du local.',need:['Type de machine','Distance entre la machine et les personnes','Volume et surfaces du local'],study:'Étude recommandée si l\'objectif concerne l\'exposition au bruit ou le respect de niveaux réglementaires.'
+},
+{
+ cat:'isolation',s:'red',label:'PROBLÉMATIQUE',q:'J\'entends le local voisin : dois-je ajouter des panneaux absorbants dans ma pièce ?',quick:'Non comme solution principale. L\'absorption intérieure ne remplace pas l\'isolation entre deux locaux.',
+ why:'L\'isolation concerne le passage du son entre deux espaces. L\'absorption concerne principalement les réflexions à l\'intérieur d\'un espace.',
+ example:'Deux bureaux séparés par une cloison : ajouter des panneaux muraux dans le bureau récepteur peut améliorer son ambiance, mais ne traite pas nécessairement la fuite par la porte ou le plénum.',
+ good:'Absorption utile si la pièce résonne aussi.',bad:'Ne pas choisir un produit absorbant uniquement parce qu\'un bruit vient de la pièce voisine.',
+ action:'Rechercher les voies de transmission : cloison, porte, plafond, plénum, gaine ou traversée technique.',need:['Composition de la cloison','Type de plafond','Présence de porte et de gaines'],study:'Étude recommandée si une performance d\'isolement entre locaux doit être atteinte.'
+},
+{
+ cat:'isolation',s:'orange',label:'À VÉRIFIER',q:'Une cloison peut-elle s\'arrêter sous un faux plafond ?',quick:'Oui constructivement, mais le son peut contourner la cloison en passant par le plénum.',
+ why:'La performance finale dépend du chemin complet du son. Un faux plafond commun aux deux locaux peut créer une transmission latérale.',
+ example:'Deux bureaux avec un plafond continu : une cloison très performante arrêtée sous plafond peut être limitée par le passage du son au-dessus de la cloison.',
+ good:'Configuration possible si le système complet a été prévu pour cela.',bad:'Se fier uniquement au Rw de la cloison sans regarder le plafond et le plénum.',
+ action:'Vérifier la combinaison cloison + plafond + plénum et les éventuelles barrières acoustiques.',need:['Hauteur de cloison','Type de plafond','Hauteur de plénum','Traversées techniques'],study:'Étude utile lorsque la confidentialité ou un isolement élevé est demandé.'
+},
+{
+ cat:'produit',s:'green',label:'RÉALISABLE',q:'Puis-je mélanger plafond acoustique, îlots et panneaux muraux ?',quick:'Oui. Ces familles peuvent être complémentaires lorsqu\'elles répondent à un besoin identifié.',
+ why:'Un plafond fournit une grande surface continue. Les îlots et panneaux muraux permettent de compléter ou de cibler certaines zones.',
+ example:'Salle avec plafond partiellement occupé par des équipements : une partie peut être traitée avec un plafond absorbant et le complément avec des îlots ou des panneaux muraux.',
+ good:'Intéressant lorsque l\'architecture empêche de traiter une seule grande surface.',bad:'Ajouter des produits sans vérifier que la pièce a réellement besoin de plus d\'absorption.',
+ calc:'Pour une première lecture : A<sub>total</sub>(f) = A<sub>plafond</sub>(f) + A<sub>îlots</sub>(f) + A<sub>murs</sub>(f).',
+ action:'Exprimer les contributions avec des grandeurs compatibles et garder une marge pour les interactions et les contraintes réelles.',need:['Surface de plafond','Nombre d\'îlots','Surface murale disponible','Performances par fréquence'],study:'Étude utile lorsque plusieurs familles de produits sont combinées pour atteindre une cible précise.'
+},
+{
+ cat:'produit',s:'orange',label:'À VÉRIFIER',q:'Faut-il mettre des panneaux absorbants sur tous les murs ?',quick:'Non. La répartition du traitement compte autant que la quantité.',
+ why:'Certaines réflexions sont plus gênantes que d\'autres. Traiter toutes les parois peut être inutile ou excessif.',
+ example:'Deux murs parallèles très réfléchissants peuvent favoriser des échos flottants. Traiter l\'une des surfaces concernées peut être plus pertinent que couvrir toute la pièce.',
+ good:'Traitement ciblé sur les surfaces impliquées dans les réflexions gênantes.',bad:'Recouvrir systématiquement tous les murs sans diagnostic.',
+ action:'Identifier les surfaces réfléchissantes dominantes et répartir le traitement en fonction de l\'usage.',need:['Géométrie de la pièce','Position des murs durs','Position des personnes'],study:'Étude utile pour les salles sensibles à l\'intelligibilité ou aux réflexions précoces.'
+},
+{
+ cat:'dimensionnement',s:'green',label:'RÉALISABLE',q:'J\'ai 10 îlots identiques : comment calculer leur absorption totale ?',quick:'On multiplie l\'A<sub>eq</sub> d\'un module par le nombre de modules, à la même fréquence.',
+ why:'A<sub>eq</sub>(f) exprime l\'aire d\'absorption équivalente d\'un objet à une fréquence donnée.',
+ example:'Si un îlot possède A<sub>eq</sub>(1000 Hz) = 2,50 m² et que N = 10, où N est le nombre d\'îlots, alors le calcul simple donne 25 m².',
+ calc:'A<sub>îlots</sub>(1000 Hz) = N × A<sub>eq</sub>(1000 Hz) = 10 × 2,50 = 25 m²',
+ good:'Calcul adapté à une première estimation pour des objets identiques dans la même configuration.',bad:'Ne pas mélanger des valeurs mesurées avec des hauteurs ou espacements différents sans vérification.',
+ action:'Toujours utiliser l\'A<sub>eq</sub> correspondant au format et à la configuration du produit.',need:['Nombre de modules','Format exact','Fréquence étudiée','Hauteur et espacement de référence'],study:'Étude utile si les îlots sont très nombreux, proches les uns des autres ou sous un plafond déjà très absorbant.'
+},
+{
+ cat:'dimensionnement',s:'orange',label:'À VÉRIFIER',q:'Comment savoir combien d\'îlots rentrent réellement dans une pièce ?',quick:'La surface des îlots ne suffit pas : il faut intégrer leurs dimensions et l\'espacement nécessaire entre eux.',
+ why:'Deux solutions peuvent avoir la même surface totale de panneaux mais occuper des emprises très différentes une fois les espacements ajoutés.',
+ example:'Dans une pièce rectangulaire, on calcule le nombre possible dans la longueur puis dans la largeur avant de multiplier les deux résultats.',
+ calc:'N<sub>L</sub> = nombre d\'îlots possibles dans la longueur ; N<sub>l</sub> = nombre d\'îlots possibles dans la largeur ; N<sub>max</sub> = N<sub>L</sub> × N<sub>l</sub>.',
+ good:'Comparer les formats avec la même règle d\'espacement et la même hauteur.',bad:'Diviser uniquement la surface de la pièce par la surface d\'un îlot.',
+ action:'Utiliser longueur, largeur, dimensions du module et distance entre modules pour calculer l\'implantation.',need:['Longueur et largeur de pièce','Dimensions de l\'îlot','Distance entre modules','Marges en périphérie'],study:'Étude ou plan d\'implantation utile si luminaires, gaines, poutres ou autres équipements limitent la trame.'
+},
+{
+ cat:'comparaison',s:'orange',label:'À VÉRIFIER',q:'Eclipse Carré 1160 ou Rectangle 1760 : lequel est le meilleur ?',quick:'Cela dépend du critère. Le Rectangle peut être meilleur par module, mais le Carré peut permettre d\'installer davantage de modules.',
+ why:'Le « meilleur » produit change selon que l\'on compare l\'A<sub>eq</sub> par module, la surface disponible ou le nombre de modules réellement implantables.',
+ example:'À 1000 Hz dans la configuration d\'exemple du cahier : Carré = 2,50 m²/module ; Rectangle = 3,70 m²/module. Pour 5 modules, le Rectangle gagne. Avec une surface physique limitée, le résultat peut s\'inverser.',
+ calc:'Même nombre : 5 × 2,50 = 12,50 m² contre 5 × 3,70 = 18,50 m².',
+ good:'Choisir le Rectangle si la contrainte principale est le nombre de modules et si l\'implantation le permet.',bad:'Dire que le Rectangle est toujours meilleur sans considérer l\'emprise et la géométrie.',
+ action:'Définir d\'abord le critère de comparaison : nombre, surface, emprise, absorption ou architecture.',need:['Dimensions de la pièce','Nombre maximal de modules','Surface disponible','Hauteur et espacement'],study:'Plan d\'implantation conseillé si le choix du format dépend fortement de l\'encombrement.'
+},
+{
+ cat:'comparaison',s:'orange',label:'À VÉRIFIER',q:'Plafond complet ou plafond partiel + îlots : quelle solution choisir ?',quick:'Les deux peuvent fonctionner. Le choix dépend de la surface disponible, de l\'architecture et du besoin acoustique.',
+ why:'Un plafond complet offre une grande surface continue. Une solution mixte permet de conserver des zones techniques et de concentrer l\'absorption ailleurs.',
+ example:'Salle avec beaucoup de luminaires et réseaux apparents : un plafond complet peut être difficile à poser, alors qu\'un traitement partiel complété par des îlots peut être plus simple.',
+ good:'Solution mixte intéressante lorsque le plafond est partiellement indisponible.',bad:'Comparer uniquement le prix par m² sans comparer l\'absorption réellement obtenue.',
+ action:'Comparer la surface traitable, l\'absorption par fréquence, l\'implantation et la maintenance.',need:['Surface de plafond libre','Contraintes techniques','Objectif acoustique','Formats envisagés'],study:'Étude utile si les deux solutions doivent être comparées à performance acoustique équivalente.'
+},
+{
+ cat:'valeurs',s:'red',label:'PROBLÉMATIQUE',q:'Puis-je additionner deux performances en dB ?',quick:'Non. Par exemple, 26 dB + 35 dB ne donne pas automatiquement 61 dB.',
+ why:'Les décibels sont logarithmiques et une performance d\'affaiblissement dépend du système complet et des chemins de transmission.',
+ example:'Une barrière, un plafond et une cloison possèdent chacun leurs propres performances, mais la performance finale ne s\'obtient pas en additionnant leurs valeurs catalogue.',
+ good:'Utiliser une performance mesurée ou calculée du système complet.',bad:'Faire une somme arithmétique de Rw, Dn,f,w ou d\'autres indices en dB.',
+ action:'Comparer des grandeurs compatibles et utiliser la méthode adaptée au système assemblé.',need:['Type exact d\'indice en dB','Composition complète du système','Conditions de mesure'],study:'Étude recommandée pour prédire l\'isolement réel entre locaux.'
+},
+{
+ cat:'valeurs',s:'red',label:'PROBLÉMATIQUE',q:'Puis-je comparer directement α<sub>w</sub> et A<sub>eq</sub> ?',quick:'Non. α<sub>w</sub> est un indice sans unité ; A<sub>eq</sub> est une aire en m².',
+ why:'Les deux grandeurs ne décrivent pas la performance de la même manière.',
+ example:'Un plafond continu peut être caractérisé par α(f) et α<sub>w</sub>, tandis qu\'un îlot est souvent présenté avec A<sub>eq</sub>(f).',
+ good:'Convertir les contributions vers une aire d\'absorption équivalente à une fréquence donnée lorsque l\'on veut les combiner dans un calcul pédagogique.',bad:'Dire qu\'un A<sub>eq</sub> de 3 m² « vaut » un α<sub>w</sub> de 1.',
+ action:'Identifier d\'abord la nature et l\'unité de chaque grandeur.',need:['Grandeur disponible','Fréquence éventuelle','Type de produit'],study:'Pas nécessaire pour une simple lecture de fiche, mais utile pour un dimensionnement complet.'
+}
+];
+
+const faqList=document.getElementById('faqList');
+const count=document.getElementById('count');
+const search=document.getElementById('search');
+let activeCat='all';
+function norm(s){return String(s||'').replace(/<[^>]+>/g,' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/α/g,'alpha').replace(/Δ/g,'delta')}
+function bullets(arr){return `<ul>${arr.map(x=>`<li>${x}</li>`).join('')}</ul>`}
+function detailHTML(x){return `
+<div class="detail-grid">
+  <div class="detail-section"><h4>Pourquoi ?</h4><p>${x.why}</p></div>
+  <div class="detail-section positive"><h4>Exemple chantier</h4><p>${x.example}</p></div>
+  ${x.calc?`<div class="detail-section"><h4>Calcul rapide</h4><div class="formula">${x.calc}</div></div>`:''}
+  <div class="detail-section"><h4>Cas adapté</h4><p>${x.good}</p></div>
+  <div class="detail-section problematic"><h4>À éviter</h4><p>${x.bad}</p></div>
+  <div class="detail-section action"><h4>À faire</h4><p>${x.action}</p></div>
+  <div class="detail-section"><h4>Données nécessaires</h4>${bullets(x.need)}</div>
+  <div class="detail-section vigilance"><h4>Quand demander une étude ?</h4><p>${x.study}</p></div>
+</div>`}
+function renderFAQ(){
+ const term=norm(search.value);
+ const items=faqData.filter(x=>{
+   const catOk=activeCat==='all'||x.cat===activeCat;
+   const hay=norm([x.q,x.quick,x.why,x.example,x.good,x.bad,x.action,(x.need||[]).join(' ')].join(' '));
+   return catOk && (!term || hay.includes(term));
+ });
+ count.textContent=`${items.length} question${items.length>1?'s':''}`;
+ faqList.innerHTML=items.length?items.map((x,i)=>`<article class="faq ${x.s} searchable"><button class="faq-head" aria-expanded="false"><div class="faq-top"><div><div class="q">${x.q}</div><div class="quick">${x.quick}</div><div class="expand-hint">Voir pourquoi et un exemple concret ▼</div></div><span class="badge ${x.s}">${x.label}</span></div></button><div class="detail">${detailHTML(x)}</div></article>`).join(''):`<div class="empty">Aucun résultat pour cette recherche.</div>`;
+ document.querySelectorAll('.faq-head').forEach(btn=>btn.onclick=()=>{const card=btn.closest('.faq');card.classList.toggle('open');btn.setAttribute('aria-expanded',card.classList.contains('open'));const hint=btn.querySelector('.expand-hint');hint.textContent=card.classList.contains('open')?'Masquer le détail ▲':'Voir pourquoi et un exemple concret ▼';});
+}
+function selectCategory(cat){activeCat=cat;document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));document.querySelectorAll('.problem').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));renderFAQ();document.querySelector('.toolbar').scrollIntoView({behavior:'smooth',block:'start'});}
+document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>selectCategory(b.dataset.cat));
+document.querySelectorAll('.problem').forEach(b=>b.onclick=()=>selectCategory(b.dataset.cat));
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.panel));window.scrollTo({top:0,behavior:'smooth'});});
+search.addEventListener('input',()=>{renderFAQ();const term=norm(search.value);document.querySelectorAll('.searchable').forEach(c=>{if(c.closest('#examplesPanel'))c.style.display=!term||norm(c.innerText).includes(term)?'':'none';});});
+renderFAQ();
+</script>
+</body>
+</html>
